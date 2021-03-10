@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myfirst-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: myfirst-deployment
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: myfirst-deployment
+    spec:
+      containers:
+        - name: myfirst
+          image: reg.navercorp.com/solver/myfirst:0.1

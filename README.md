@@ -2,6 +2,8 @@
 
 1. docker
 ```
+$ make build
+
 # Dockerfile을 이용하여 이미지 생성
 $ docker build -t myfirst:0.1 .
 
@@ -23,5 +25,14 @@ $ docker exec -it myfirstct /bin/bash
 
 2. k8s
 ```
-TODO
+$ make build
+$ ncc build -t reg.navercorp.com/solver/myfirst:0.1 .
+
+$ kubectl create -f deployment.yaml
+
+$ kubectl get pods
+
+$ kubectl exec -it myfirst-deployment-65d7f884d6-tffss /bin/bash
+
+$ kubectl delete -f Deployment.yaml
 ```
