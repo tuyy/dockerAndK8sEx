@@ -36,6 +36,8 @@ $ kubectl exec -it myfirst-deployment-65d7f884d6-tffss /bin/bash
 
 $ kubectl delete -f Deployment.yaml
 
+==========
+
 # deployment를 사용하면 리비전 관리, 다양한 pod의 배포 정책을 지정할 수 있음
 
 # 롤링업데이트로 이미지 변경
@@ -71,14 +73,14 @@ REVISION  CHANGE-CAUSE
 $ kubectl scale --replicas=1 deployment  myfirst-deployment
 deployment.extensions/myfirst-deployment scaled
 
+==========
+
 # 서비스 디스커버리 전략
 * LoadBalancer VIP
     * [service-name].[namespace].svc.[cluster-name].io.xxxxcorp.com
 
-```
 $ curl myfirst-svc-lb.devmail.svc.xd1.io.navercorp.com:3000/ping
 {"message":"pong22"}
-```
 
 * 내부 ClusterIP
     * 같은 namepsace에서 [service-name]
