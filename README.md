@@ -1,6 +1,6 @@
-## docker, k8s
+# docker, k8s
 
-1) docker basic
+## 1) docker basic
 ```
 $ make build
 
@@ -23,7 +23,7 @@ $ docker exec myfirstct /sbin/ifconfig
 $ docker exec -it myfirstct /bin/bash
 ```
 
-2) k8s Deployment
+## 2) k8s Deployment
 ```
 $ make build
 $ ncc build -t reg.xxxxcorp.com/solver/myfirst:0.1 .
@@ -90,7 +90,7 @@ $ curl myfirst-svc-lb.devmail.svc.xd1.io.navercorp.com:3000/ping
 * 롤링 업데이트: 하나씩 순차적으로 배포(default)
 ```
 
-3) k8s Service
+## 3) k8s Service
 ```
 $ kubectl apply -f Deployment2.yaml
 
@@ -168,7 +168,8 @@ $ curl 10.108.227.101
 # 주의할 점은 LoadBalancer type 서비스의 ClusterIP를 사용하기 위해서는 서비스의 targetPort 그리고 pod의 containerPort가 일치 해야함. ExternalIP를 사용하기 위해서는 서비스의 port와 targetPort 그리고 pod의 containerPort가 모두 일치 해야 함. 즉, 여러개의 포트를 사용하는 서비스의 경우 ClusterIP만 사용하는 Port 인 경우와 ExternalIP가 포함된 Port는 일치시켜야 조건에 차이가 있으니 주의해야함.
 ```
 
-4) k8s ConfigMap, Secret, kustomize
+## 4) k8s ConfigMap, Secret, kustomize
+
 ```
 // configmap -> cm 도 가능
 $ kubectl create configmap myfirst-configmap --from-literal name=tuyy --from-literal age=31
@@ -428,5 +429,15 @@ configmap/kustomize-cm-dmd7fbtd6g created
 $ kubectl get cm
 NAME                      DATA   AGE
 kustomize-cm-dmd7fbtd6g   2      5s
+```
+
+## 5) ingress
+
+* 인그레스는 여러 디플로이먼트를 외부에 노출해야할 때(외부 -> 내부) 라우팅 정의나 보안 등을 처리한다.
+    * 외부 요청의 라우팅: URL 기반 라우팅 규칙을 설정할 수 있음
+    * 가상 호스트 기반의 요청 처리: 같은 IP에 대해 다른 도메인 이름으로 요청이 왔을때 어떻게 처리할지 정의할 수 있음
+    * SSL/TLS 보안 연결 처리: 여러 개의 서비스로 요청을 라우팅할 때, 보안 연결을 위한 인증서를 쉽게 적용 가능
+
+```
 
 ```
