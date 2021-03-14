@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  age: "31"
+  name: tuyy0
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: yaml-cm

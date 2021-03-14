@@ -1,0 +1,5 @@
+configMapGenerator:
+    - name: kustomize-cm
+      files:
+          - test1=test.txt
+          - test2=test.txt
